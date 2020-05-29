@@ -1,0 +1,190 @@
+---
+title: Squzy Monitoring
+---
+
+System allows monitoring resources with different type of check. It uses MONGO for save state of the application and restore
+
+[![version](https://img.shields.io/github/v/release/squzy/squzy.svg)](https://github.com/squzy/squzy)
+
+## System Health Checks Capabilities
+
+- HTTP/HTTPS
+- TCP
+- GRPC - https://github.com/grpc/grpc/blob/master/doc/health-checking.md
+- SiteMap.xml - https://www.sitemaps.org/protocol.html
+- Parse Json Value from http response by selectors(https://github.com/tidwall/gjson)
+
+# Usage
+
+## Docker
+
+[![docker](https://img.shields.io/docker/pulls/squzy/squzy_monitoring)](https://hub.docker.com/repository/docker/squzy/squzy_monitoring)
+
+Link on [Docker HUB](https://hub.docker.com/repository/docker/squzy/squzy_monitoring)
+
+## Manually
+
+Download latest release from [page](https://github.com/squzy/squzy/releases)
+
+## Environment variables
+
+<div style="overflow-x:auto;">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Required?</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <th>PORT</th>
+      <th>No</th>
+      <th>9090</th>
+      <th>Which port listen</th>
+    </tr>
+    <tr>
+      <th>SQUZY_STORAGE_HOST</th>
+      <th>No</th>
+      <th>stdout/stderr</th>
+      <th>Where storing log [API](https://github.com/squzy/squzy_proto/blob/master/proto/v1/squzy_storage.proto#L16)</th>
+    </tr>
+    <tr>
+      <th>SQUZY_STORAGE_TIMEOUT</th>
+      <th>No</th>
+      <th>10sec</th>
+      <th>Timeout for each request for storage</th>
+    </tr>
+    <tr>
+      <th>MONGO_URI</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>Mongo URI - `mongodb://localhost:27017`</th>
+    </tr>
+    <tr>
+      <th>MONGO_DB</th>
+      <th>No</th>
+      <th>squzy_monitoring</th>
+      <th>Which DB use</th>
+    </tr>
+    <tr>
+      <th>MONGO_COLLECTION</th>
+      <th>No</th>
+      <th>schedulers</th>
+      <th>Which collection use</th>
+    </tr>
+  </table>
+</div>
+
+## API
+
+We use Protobuff for describe API
+
+[GRPC API](https://github.com/squzy/squzy_proto/blob/master/proto/v1/squzy_monitoring.proto)
+
+## Storage 
+
+This is entity for save results from squzy monitoring
+
+You can implement storage by your self via this grpc method [API](https://github.com/squzy/squzy_proto/blob/master/proto/v1/squzy_storage.proto#L16)
+
+By default squzy monitoring will send **success checks in stdout**, **errors in stderr**
+
+# Examples of call from [BloomRPC](https://github.com/uw-labs/bloomrpc)
+
+## Http/Https check:
+
+Usually that check used for monitoring web sites
+
+```shell script
+{
+  "interval": 10, - 10 second interval
+  "timeout": 5, - // default timeout is 10 sec
+  "http": {
+    "method": "GET", - method GET/POST/PUT/DELETE/HEAD
+    "url": "https://google.com", - url which should call
+    "headers": {
+      "custom": "yes",
+    },
+    "statusCode": 200 - expected statusCode
+  }
+}
+```
+
+## Tcp check:
+
+Check good use for monitoring open ports or not
+
+```shell script
+{
+  "interval": 10, - 10 second interval
+  "timeout": 5, - // default timeout is 10 sec
+  "tcp": {
+    "host": "localhost", - host
+    "port": 6345 - port
+  },
+}
+```
+
+## SiteMap check:
+
+**Supports redirects!**
+
+**Every route should return 200**
+
+That check good usage when you have critical URL in sitemap, if any of URL throw error check will be failed
+
+```shell script
+{
+  "interval": 10,
+  "timeout": 5, - // default timeout is 10 sec
+  "sitemap": {
+    "url": "https://www.sitemaps.org/sitemap.xml", - url of sitemap (https://www.sitemaps.org/sitemap.xml)
+    "concurrency": 5 - parallel 5 request  
+  },
+}
+```
+
+## GRPC check:
+
+Check better to use for internal testing of API services
+
+```shell script
+{
+  "interval": 10,
+  "timeout": 5, - // default timeout is 10 sec
+  "grpc": {
+    "service": "Check", - service name
+    "host": "localhost", - host
+    "port": 9090 - port
+  },
+}
+```
+
+## Value monitoring from Http json response (v1.3.0+)
+
+Monitoring specific value from http request by json selector
+
+Valid selectors you can find here: https://github.com/tidwall/gjson
+
+Support type: https://github.com/squzy/squzy_proto/blob/master/proto/v1/server.proto#L84
+    
+
+```shell script
+{
+  "interval": 10,
+  "timeout": 5, - // default timeout is 10 sec
+  "httpValue": {
+      "method": "GET",
+      "url": "https://api.exchangeratesapi.io/latest?base=USD",
+      "headers": {
+        "custom": "yes",
+      },
+      "selectors": [
+        {
+          "type": 4,
+          "path": "rates.RUB"
+        }
+      ]
+    }
+}
+```

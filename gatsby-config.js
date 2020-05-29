@@ -1,16 +1,16 @@
 module.exports = {
   siteMetadata: {
-    siteTitle: `@rocketseat/gatsby-theme-docs`,
-    defaultTitle: `@rocketseat/gatsby-theme-docs`,
+    siteTitle: `Squzy - a high-performance open-source monitoring, incident and alert system written in Golang with Bazel and love.`,
+    defaultTitle: `Squzy system`,
     siteTitleShort: `gatsby-theme-docs`,
-    siteDescription: `Out of the box Gatsby Theme for creating documentation websites easily and quickly`,
-    siteUrl: `https://rocketdocs.netlify.com`,
-    siteAuthor: `@rocketseat`,
+    siteDescription: `High-performance open-source monitoring, incident and alert system written in Golang with Bazel and love.`,
+    siteUrl: `https://squzy.app`,
+    siteAuthor: `@PxyUp`,
     siteImage: `/banner.png`,
     siteLanguage: `en`,
     themeColor: `#7159c1`,
     basePath: `/`,
-    footer: `Theme by Rocketseat`,
+    footer: `Thanks Gatsby + Rocketseat`,
   },
   plugins: [
     {
@@ -18,15 +18,14 @@ module.exports = {
       options: {
         configPath: `src/config`,
         docsPath: `src/docs`,
-        githubUrl: `https://github.com/rocketseat/gatsby-themes`,
-        baseDir: `examples/gatsby-theme-docs`,
+        githubUrl: `https://github.com/squzy/squzy-web`,
       },
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Rocketseat Gatsby Themes`,
-        short_name: `RS Gatsby Themes`,
+        name: `Squzy - a high-performance monitoring system`,
+        short_name: `Squzy`,
         start_url: `/`,
         background_color: `#ffffff`,
         display: `standalone`,
@@ -35,15 +34,9 @@ module.exports = {
     },
     `gatsby-plugin-sitemap`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        // trackingId: ``,
-      },
-    },
-    {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://rocketdocs.netlify.com`,
+        siteUrl: `https://squzy.app`,
       },
     },
     `gatsby-plugin-offline`,
