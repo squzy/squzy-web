@@ -1,0 +1,25 @@
+name: Release via tag
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout in to code
+        uses: actions/checkout@v1
+
+      - name: Set env version
+        id: set_env
+        run: echo ::set-output name=RELEASE_VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+
+      - name: Push to docker with release tag
+        uses: docker/build-push-action@v1
+        with:
+          username: squzy
+          password: ${{ secrets.DOCKER_TOKEN }}
+          repository: squzy/squzy_web
+          tags: ${{ steps.set_env.outputs.RELEASE_VERSION }}
+

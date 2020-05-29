@@ -1,0 +1,24 @@
+name: Release develop latest
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - 'v*.*.*'
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout in to code
+        uses: actions/checkout@v1
+
+      - name: Push to docker with latest tags
+        if: ${{ github.ref == 'refs/heads/develop'}}
+        uses: docker/build-push-action@v1
+        with:
+          username: squzy
+          password: ${{ secrets.DOCKER_TOKEN }}
+          repository: squzy/squzy_web
+          tags: latest
+
