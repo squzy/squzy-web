@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     siteTitle: `Squzy - a high-performance open-source monitoring, incident and alert system written in Golang with Bazel and love.`,
     defaultTitle: `Squzy system`,
-    siteTitleShort: `gatsby-theme-docs`,
+    siteTitleShort: `Squzy system`,
     siteDescription: `High-performance open-source monitoring, incident and alert system written in Golang with Bazel and love.`,
     siteUrl: `https://squzy.app`,
     siteAuthor: `@PxyUp`,
@@ -38,6 +38,19 @@ module.exports = {
       options: {
         siteUrl: `https://squzy.app`,
       },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+        {
+          resolve: "gatsby-remark-external-links",
+          options: {
+            target: "_blank",
+          }
+        }
+        ]
+      }
     },
     `gatsby-plugin-offline`,
   ],

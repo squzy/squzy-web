@@ -1,5 +1,7 @@
 # Sidebar navigation
 
+- label: 'Demo'
+  link: 'https://demo.squzy.app'
 - label: 'Introduction'
   link: '/'
 - label: 'Getting started'
