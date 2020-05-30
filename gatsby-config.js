@@ -39,6 +39,19 @@ module.exports = {
         siteUrl: `https://squzy.app`,
       },
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+        {
+          resolve: "gatsby-remark-external-links",
+          options: {
+            target: "_blank",
+          }
+        }
+        ]
+      }
+    },
     `gatsby-plugin-offline`,
   ],
 };
