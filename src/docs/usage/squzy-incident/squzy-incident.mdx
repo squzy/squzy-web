@@ -1,0 +1,86 @@
+---
+title: Squzy Incident
+---
+
+## About
+
+Squzy Incident allow user to analyze the information received from application, checker or agent. 
+For that user define his own rules, which would be working on each storage update.
+
+Squzy doesn't lock the user down with the restricted number of rules.
+Instead of that, it allows user to create his own rules!
+
+Do you want to have a simply incident if the overload of all processors is more than 90%? No problem!
+
+Or do you want  to have an incident when one of the last 77 measurements of all CPU’s load is 99%, every of the 10 last memory measurements has less than 512 Mb free memory and there is less than 2 Gb free space on one of the disks now? You are welcome!
+
+In order to give user ability to create his own incident rules without restrictions, we’ve taken the [**expr**](https://github.com/antonmedv/expr) library and expanded it with our own definitions (watch incident-rules).
+
+If you can’t create some rule you want to have - let us know.
+
+And now few technical details.
+
+[![version](https://img.shields.io/github/v/release/squzy/squzy.svg)](https://github.com/squzy/squzy)
+
+# Usage
+
+## Docker
+
+[![docker](https://img.shields.io/docker/pulls/squzy/squzy_incident)](https://hub.docker.com/repository/docker/squzy/squzy_incident)
+
+Link on [Docker HUB](https://hub.docker.com/repository/docker/squzy/squzy_incident)
+
+## Manually
+
+Download latest release from [page](https://github.com/squzy/squzy/releases)
+
+## Environment variables
+
+<div style="overflow-x:auto;">
+  <table>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Required?</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <th>PORT</th>
+      <th>No</th>
+      <th>9097</th>
+      <th>GRPC port to listen</th>
+    </tr>
+    <tr>
+      <th>MONGO_URI</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>Mongo db URL for rules storaging</th>
+    </tr>
+    <tr>
+      <th>MONGO_DB</th>
+      <th>No</th>
+      <th>incident_manager</th>
+      <th>Mongo db name for rules storaging</th>
+    </tr>
+    <tr>
+      <th>MONGO_COLLECTION</th>
+      <th>No</th>
+      <th>rules</th>
+      <th>Mongo db collection for rules storaging</th>
+    </tr>
+    <tr>
+      <th>MONGO_DB</th>
+      <th>No</th>
+      <th>squzy_monitoring</th>
+      <th>Which DB use</th>
+    </tr>
+    <tr>
+      <th>STORAGE_HOST</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>The host for storage connection</th>
+    </tr>
+    </tbody>
+  </table>
+</div>

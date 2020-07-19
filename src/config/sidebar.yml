@@ -10,3 +10,9 @@
   items:
     - label: 'Squzy Monitoring'
       link: '/usage/squzy-monitoring'
+    - label: Squzy Incident
+      items:
+        - label: 'Squzy Incident'
+          link: '/usage/squzy-incident/squzy-incident'
+        - label: 'Incident Rules'
+          link: '/usage/squzy-incident/incident-rules'
