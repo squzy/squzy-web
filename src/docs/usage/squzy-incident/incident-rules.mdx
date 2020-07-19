@@ -70,7 +70,7 @@ Possible filters:
 
 Example:
 
-```sh
+```bash
     any(
         Last(10, UseType(CPU), UseTimeFrom("05/02/2020")),
         {
@@ -148,7 +148,7 @@ Possible filters:
 
 The example of a rule:
 
-```sh
+```bash
     len(
         First(10, UseType(HTTP), UseStatus(Success), UsePath("http://localhost"), UseMethod("GET"))
     ) <= 1
@@ -195,7 +195,7 @@ Possible filters:
 
 Example of a rule:
 
-```sh
+```bash
     all(
         Last(5), {.Code === Error}
     )
