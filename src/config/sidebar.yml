@@ -8,6 +8,8 @@
   link: '/getting-started'
 - label: Squzy structure
   link: '/squzy-structure'
+- label: 'Squzy Proto'
+  link: '/squzy-proto'
 - label: Products
   items:
     - label: 'Squzy Monitoring'
@@ -18,3 +20,7 @@
       link: '/usage/squzy-incident/incident-rules'
     - label: 'Squzy Storage'
       link: '/usage/squzy-storage/squzy-storage'
+    - label: 'Squzy Agent Client'
+      link: '/usage/squzy-agent/squzy-agent-client'
+    - label: 'Squzy Agent Server'
+      link: '/usage/squzy-agent/squzy-agent-server'
