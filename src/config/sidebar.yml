@@ -14,3 +14,5 @@
       link: '/usage/squzy-incident/squzy-incident'
     - label: 'Incident Rules'
       link: '/usage/squzy-incident/incident-rules'
+    - label: 'Squzy Storage'
+      link: '/usage/squzy-storage/squzy-storage'
