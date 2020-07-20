@@ -6,6 +6,8 @@
   link: '/'
 - label: 'Getting started'
   link: '/getting-started'
+- label: Squzy structure
+  link: '/squzy-structure'
 - label: Products
   items:
     - label: 'Squzy Monitoring'

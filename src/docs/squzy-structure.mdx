@@ -1,0 +1,47 @@
+---
+title: 'Structure of Squzy'
+---
+
+# Demo
+
+You can try to use Squzy on our demo:
+
+https://demo.squzy.app/
+
+The ability for adding new entities is disabled here.
+
+# Structure
+
+The structure of full-deployed Squzy is on picture below.
+
+<div>
+    <img src="/static/squzy_scheme.png" alt="Structure of Squzy"/>
+</div>
+
+## Agent-Client & Agent-Server
+
+Agent client is an entity which takes information about CPUs, memory and network load on some concrete device (computer, server). The information from client is going to the agent server, where it is handled.
+
+## Applications
+
+Application is an entity which is integrated in your service (within GRPC, gin or http) and analyse time of each transition provided by the service.
+
+## Monitoring
+
+Without going into detail, monitoring is a part of Squzy, which pinging http, HTPC endpoints, sitemap, and checking if the response was received or not.
+
+## Storage
+
+Storage is a service for connecting to database. By this moment default database is Postgres. Each agent measurement, application transition or checker data is stored here.
+
+## Incidents
+
+Incidents allows you to catch some unobvious cases when system works incorrect. They allow creating of fully user-defined rules. The checking of a rule takes part on each entity adding to storage.
+
+## API
+
+API provides one-place possibility to communicate with all system.
+
+## Notifications
+
+Notifications allow user to receive notifications on selected messenger on incident.
