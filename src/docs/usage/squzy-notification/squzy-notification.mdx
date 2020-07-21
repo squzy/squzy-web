@@ -1,0 +1,112 @@
+---
+title: Squzy Notification Manager
+---
+
+# About
+
+Squzy Notification Manager service which will notify user about incidents.
+
+[Demo](https://demo.squzy.app/notification-methods/list)
+
+[![version](https://img.shields.io/github/v/release/squzy/squzy.svg)](https://github.com/squzy/squzy)
+
+# Usage
+
+## Docker
+
+[![docker](https://img.shields.io/docker/pulls/squzy/squzy_notification)](https://hub.docker.com/repository/docker/squzy/squzy_notificationg)
+
+Link on [Docker HUB](https://hub.docker.com/repository/docker/squzy/squzy_notification)
+
+## Manually
+
+Download latest release from [page](https://github.com/squzy/squzy/releases)
+
+## Environment variables
+
+<div style="overflow-x:auto;">
+  <table>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Required?</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <th>PORT</th>
+      <th>No</th>
+      <th>9098</th>
+      <th>GRPC port to listen</th>
+    </tr>
+    <tr>
+      <th>STORAGE_HOST</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>The host for storage connection</th>
+    </tr>
+    <tr>
+      <th>MONGO_URI</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>Mongo URI - mongodb://localhost:27017</th>
+    </tr>
+    <tr>
+      <th>MONGO_DB</th>
+      <th>No</th>
+      <th>applications_monitoring</th>
+      <th>Which DB use</th>
+    </tr>
+    <tr>
+      <th>MONGO_COLLECTION</th>
+      <th>No</th>
+      <th>application</th>
+      <th>Which collection use</th>
+    </tr>
+    <tr>
+      <th>MONGO_LIST_COLLECTION</th>
+      <th>No</th>
+      <th>list</th>
+      <th>Which coolection save links</th>
+    </tr>
+    <tr>
+      <th>MONGO_METHOD_COLLECTION</th>
+      <th>No</th>
+      <th>methods</th>
+      <th>Which coolection save methods</th>
+    </tr>
+    <tr>
+      <th>DASHBOARD_HOST</th>
+      <th>No</th>
+      <th>-</th>
+      <th>Dashboard host for incident page</th>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## API
+
+We use Protobuff for describe API
+
+[GRPC API](https://github.com/squzy/squzy_proto/blob/master/proto/v1/squzy_notification_server.proto)
+
+## Support types
+
+### Webhook
+
+Method: *POST*
+
+```go
+type WebhookRequest struct {
+	Id        string             `json:"id"`
+	Status    api.IncidentStatus `json:"status"`
+	CreatedAt string             `json:"createdAt,omitempty"`
+	UpdatedAt string             `json:"updatedAt,omitempty"`
+	Link      string             `json:"link,omitempty"`
+}
+```
+
+### Slack
+
+Use slack channel webhook
