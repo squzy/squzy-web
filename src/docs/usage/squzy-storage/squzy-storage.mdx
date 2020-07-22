@@ -1,0 +1,74 @@
+---
+title: Squzy Storage
+---
+
+## About
+
+Squzy Storage is a part of squzy, which stores the most part of inforamtion: application, agent, monitoring data and incidents.
+
+By this moment we are using postgress.
+
+[![version](https://img.shields.io/github/v/release/squzy/squzy.svg)](https://github.com/squzy/squzy)
+
+# Usage
+
+## Docker
+
+[![docker](https://img.shields.io/docker/pulls/squzy/squzy_storage)](https://hub.docker.com/repository/docker/squzy/squzy_storage)
+
+Link on [Docker HUB](https://hub.docker.com/repository/docker/squzy/squzy_storage)
+
+## Manually
+
+Download latest r elease from [page](https://github.com/squzy/squzy/releases)
+
+## Environment variables
+
+<div style="overflow-x:auto;">
+  <table>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Required?</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <th>PORT</th>
+      <th>No</th>
+      <th>9090</th>
+      <th>GRPC port to listen</th>
+    </tr>
+    <tr>
+      <th>DB_HOST</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>Postgress host</th>
+    </tr>
+    <tr>
+      <th>DB_PORT</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>Postgress port</th>
+    </tr>
+    <tr>
+      <th>DB_NAME</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>Postgress name</th>
+    </tr>
+    <tr>
+      <th>DB_PASSWORD</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>Postgress password</th>
+    </tr>
+    <tr>
+      <th>DB_LOGS</th>
+      <th>No</th>
+      <th>false</th>
+      <th>Enable database logs</th>
+    </tr>
+    </tbody>
+  </table>
+</div>

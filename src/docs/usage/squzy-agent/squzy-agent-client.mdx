@@ -1,0 +1,58 @@
+---
+title: Squzy Agent Client
+---
+
+## About
+
+This is small application which grabs information from host machine
+
+The list of information grabbing by Squzy Agent Client:
+1. CPU load per each
+2. Memory usage (used/free/total/shared)
+3. Disk (used/free/total) per each disk
+4. Net (bytes sent/get, package sent/get , err stat)
+
+[![version](https://img.shields.io/github/v/release/squzy/squzy.svg)](https://github.com/squzy/squzy)
+
+# Usage
+
+## Manually
+
+Download latest release from [page](https://github.com/squzy/squzy/releases)
+
+## Environment variables
+
+- **SQUZY_AGENT_SERVER_HOST** - agent server host
+- SQUZY_AGENT_INTERVAL(5s) - how offen get metric
+- SQUZY_AGENT_NAME - uniq name for define strict agent
+
+<div style="overflow-x:auto;">
+  <table>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Required?</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <th>SQUZY_AGENT_SERVER_HOST</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>Host of the Squzy Agent Server</th>
+    </tr>
+    <tr>
+      <th>SQUZY_AGENT_INTERVAL</th>
+      <th>No</th>
+      <th>5s</th>
+      <th>Interval for data taking</th>
+    </tr>
+    <tr>
+      <th>SQUZY_AGENT_NAME</th>
+      <th>No</th>
+      <th>-</th>
+      <th>Name of Agent</th>
+    </tr>
+    </tbody>
+  </table>
+</div>

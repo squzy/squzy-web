@@ -1,0 +1,100 @@
+---
+title: Squzy Application Monitoring
+---
+
+# About
+
+Squzy Application Monitoring server which collects information from application.
+Right now it takes transaction information + tracing (between servicies).
+
+[Demo: tracing + gin + grpc](https://demo.squzy.app/transactions/Y_jLC4hlwirv0PYqvSVG5)
+
+[Github DEMO](https://github.com/squzy/test_tracing)
+
+[![version](https://img.shields.io/github/v/release/squzy/squzy.svg)](https://github.com/squzy/squzy)
+
+# Usage
+
+## Docker
+
+[![docker](https://img.shields.io/docker/pulls/squzy/squzy_application_monitoring)](https://hub.docker.com/repository/docker/squzy/squzy_application_monitoring)
+
+Link on [Docker HUB](https://hub.docker.com/repository/docker/squzy/squzy_application_monitoring)
+
+## Manually
+
+Download latest release from [page](https://github.com/squzy/squzy/releases)
+
+## Environment variables
+
+<div style="overflow-x:auto;">
+  <table>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Required?</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <th>PORT</th>
+      <th>No</th>
+      <th>9095</th>
+      <th>GRPC port to listen</th>
+    </tr>
+    <tr>
+      <th>STORAGE_HOST</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>The host for storage connection</th>
+    </tr>
+    <tr>
+      <th>SQUZY_STORAGE_TIMEOUT</th>
+      <th>No</th>
+      <th>5sec</th>
+      <th>Timeout for each request for storage</th>
+    </tr>
+    <tr>
+      <th>MONGO_URI</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>Mongo URI - mongodb://localhost:27017</th>
+    </tr>
+    <tr>
+      <th>MONGO_DB</th>
+      <th>No</th>
+      <th>applications_monitoring</th>
+      <th>Which DB use</th>
+    </tr>
+    <tr>
+      <th>MONGO_COLLECTION</th>
+      <th>No</th>
+      <th>application</th>
+      <th>Which collection use</th>
+    </tr>
+    <tr>
+      <th>TRACING_HEADER</th>
+      <th>No</th>
+      <th>Squzy_transaction</th>
+      <th>Which header to trace between servicies</th>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## API
+
+We use Protobuff for describe API
+
+[GRPC API](https://github.com/squzy/squzy_proto/blob/master/proto/v1/squzy_application_monitoring.proto)
+
+## Our integration
+
+- [Golang: GRPC/GIN/HTTP](https://github.com/squzy/squzy_go)
+- [Javascript: Vanilla/Express/Angular](https://github.com/squzy/squzy_node)
+
+## Integration plan:
+
+- Wrap Databases for NodeJs/Go
+- Wrap more frameworks
+- Wrap Python/Php/C#

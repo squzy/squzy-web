@@ -1,0 +1,73 @@
+---
+title: Squzy Agent Server
+---
+
+## About
+
+Squzy Agent Server is a part of Squzy which deal with agent information handling.
+It receives information from all the system agents, after what sends it to Squzy Storage for saving.
+
+[![version](https://img.shields.io/github/v/release/squzy/squzy.svg)](https://github.com/squzy/squzy)
+
+# Usage
+
+## Docker
+
+[![docker](https://img.shields.io/docker/pulls/squzy/squzy_agent_server)](https://hub.docker.com/repository/docker/squzy/squzy_agent_server)
+
+Link on [Docker HUB](https://hub.docker.com/repository/docker/squzy/squzy_agent_server)
+
+## Manually
+
+Download latest release from [page](https://github.com/squzy/squzy/releases)
+
+## Environment variables
+
+<div style="overflow-x:auto;">
+  <table>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Required?</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <th>PORT</th>
+      <th>No</th>
+      <th>9091</th>
+      <th>GRPC port to listen</th>
+    </tr>
+    <tr>
+      <th>MONGO_URI</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>Mongo URI</th>
+    </tr>
+    <tr>
+      <th>MONGO_DB</th>
+      <th>No</th>
+      <th>squzy_agent</th>
+      <th>Name of Mongo database</th>
+    </tr>
+    <tr>
+      <th>MONGO_COLLECTION</th>
+      <th>No</th>
+      <th>agents</th>
+      <th>Name of Mongo collection</th>
+    </tr>
+    <tr>
+      <th>SQUZY_STORAGE_HOST</th>
+      <th>Yes</th>
+      <th>-</th>
+      <th>Host for connection to Squzy Storage</th>
+    </tr>
+    <tr>
+      <th>SQUZY_STORAGE_TIMEOUT</th>
+      <th>No</th>
+      <th>5 s</th>
+      <th>Timeout for connection to Squzy Storage</th>
+    </tr>
+    </tbody>
+  </table>
+</div>
