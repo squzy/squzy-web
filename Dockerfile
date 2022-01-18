@@ -1,7 +1,7 @@
 ARG GATSBY_ACTIVE_ENV=production
 
 
-FROM node:12-buster AS build
+FROM node:17-buster AS build
 
 RUN yarn global add gatsby-cli
 ARG GATSBY_ACTIVE_ENV
